@@ -1,0 +1,25 @@
+Quick-Commerce Delivery Intelligence — Problem Statement 1: Data Quality & Reliability
+
+Original dataset shape: (45593, 20)
+Cleaned dataset shape: (45593, 23)
+Missing cells before / after: 9,131 / 23,782
+Exact duplicate records: 0
+Invalid/suspicious GPS records: 3,640
+Invalid rider ages: 38
+Invalid rider ratings: 53
+Delivery-time IQR outliers (retained): 270
+Records retained: 45,593
+Records removed: 0
+
+Final observations:
+- The source contains 45,593 records and 20 columns.
+- Missing-value normalization found 9,131 missing cells before treatment and 23,782 in the retained cleaned data.
+- 0 exact duplicate records were identified; 0 records in total were removed under the duplicate/invalid-target rules.
+- 3,640 records had invalid or suspicious GPS pairs. Coordinates were marked missing instead of guessed.
+- 38 rider ages failed the inclusive 18-80 validation rule or were unparseable; cleaned values were marked missing, original values and flags were retained, and orders were kept.
+- For consistency across the project, rider age values are considered valid for analysis when they fall between 18 and 80 years, inclusive. This is a data-validation rule and does not represent rider professional experience.
+- 270 delivery times fell outside the 1.5×IQR fences. They were retained and flagged, not automatically deleted.
+- Other missing order attributes were preserved without imputation. Categorical formatting was standardized only where specified.
+
+Treatment note: no missing values were imputed and no replacement GPS coordinates were invented.
+IQR outliers were retained; only exact duplicates and records with unusable delivery-time targets were removed.

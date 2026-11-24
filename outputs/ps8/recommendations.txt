@@ -1,0 +1,24 @@
+PS8 — THREE PRIORITIZED MANAGEMENT RECOMMENDATIONS
+======================================================
+Available records represent restaurant food delivery; use as a quick-commerce proxy only. Validate recommendations with actual quick-commerce operating data.
+
+1. [High] Investigate the supported DBSCAN hotspot with the highest late rate
+Observed finding: DBSCAN hotspot 52 has the highest late rate among hotspots with at least the data-derived median support (85 orders).
+Operational problem: The supported hotspot has a higher observed late rate than the valid-GPS network benchmark; the available dataset does not identify the cause.
+Supporting numerical evidence: {"average_delivery_time_minutes": 30.02, "dbscan_cluster_id": 52, "difference_vs_network_percentage_points": 20.64, "eps_km": 1.56069349119838, "late_rate_pct": 50.57, "median_hotspot_support_screen_orders": 85, "min_samples": 15, "network_late_rate_pct": 29.94, "orders": 87, "radius_p95_from_centroid_km": 0.7, "source": "PS6 DBSCAN hotspot summary"}
+Recommended management action: Review dispatch timing, route conditions, and service coverage with local operators for this coordinate-defined hotspot. Verify the locality and current operations before changing footprint.
+Expected benefit (projected, not observed): Projected, not observed: a local review may identify operational adjustments worth testing; measure results in a follow-up pilot before attributing any change.
+
+2. [High] Offer non-punitive workflow support to the highest late-rate rider segment
+Observed finding: Exploratory rider segment 0 (Higher late rate, slower deliveries, lower ratings, higher daily volume) has the highest segment-average late rate. The selected clustering silhouette is 0.247, indicating weak separation.
+Operational problem: One exploratory segment has a higher observed late rate; weak cluster separation means membership should not be treated as a definitive individual performance category.
+Supporting numerical evidence: {"average_delivery_time_minutes": 28.7, "deliveries": 7592, "late_rate_pct": 42.28, "rider_cluster_silhouette": 0.24664704006212868, "rider_network_average_late_rate_pct": 29.99, "rider_segment_id": 0, "riders": 265, "segment_description": "Higher late rate, slower deliveries, lower ratings, higher daily volume", "source": "PS7 rider segment profile"}
+Recommended management action: Use supportive, non-punitive workflow reviews with a representative sample of riders from this segment to understand barriers; do not make individual personnel decisions from clusters.
+Expected benefit (projected, not observed): Projected, not observed: reviewing operational barriers may suggest support improvements; assess any effect with later data and avoid causal attribution from this analysis.
+
+3. [Medium] Pilot capacity review for the largest observed delivery hotspot
+Observed finding: DBSCAN hotspot 18 contains the largest valid-GPS order concentration (3187 orders; 7.60% of valid-GPS records). The highest-throughput rider segment averages 1.70 deliveries per active day.
+Operational problem: Recorded delivery demand is geographically concentrated, but current locality-level supply and quick-commerce demand are not available in this dataset.
+Supporting numerical evidence: {"dbscan_cluster_id": 18, "deliveries_per_active_day": 1.7, "hotspot_demand_share_pct": 7.6, "hotspot_late_rate_pct": 29.02, "hotspot_orders": 3187, "hotspot_radius_p95_from_centroid_km": 10.49, "rider_segment_count": 545, "rider_segment_id": 1, "source": "PS6 DBSCAN hotspot summary and PS7 rider segment profile"}
+Recommended management action: Pilot a limited staffing and service-coverage review around the largest observed hotspot, using rider throughput as context and validating local demand and current supply first.
+Expected benefit (projected, not observed): Projected, not observed: aligning planned coverage with verified demand may improve capacity fit; quantify any effect only after a pilot using actual quick-commerce records.

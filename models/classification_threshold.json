@@ -1,0 +1,7 @@
+{
+  "threshold": 0.29,
+  "selected_using": "validation data only",
+  "selection_rule": "Maximum F1; ties prefer the higher threshold.",
+  "sla_minutes": 30,
+  "score_interpretation": "Estimated late-delivery risk score; not a guaranteed probability."
+}

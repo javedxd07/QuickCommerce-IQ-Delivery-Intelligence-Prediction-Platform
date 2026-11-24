@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="66" viewBox="0 0 300 66" role="img" aria-labelledby="title description">
+  <title id="title">Delivery Intelligence</title>
+  <desc id="description">Operational Analytics Platform</desc>
+  <rect x="1" y="12" width="42" height="42" rx="8" fill="#1d4ed8" fill-opacity=".26" stroke="#60a5fa" stroke-opacity=".48"/>
+  <path d="m22 21 10 5.5v13L22 45l-10-5.5v-13L22 21Z" fill="none" stroke="#bfdbfe" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="m12 26.5 10 5.7 10-5.7M22 32.2V45m-10-18.5 10 5.7 10-5.7" fill="none" stroke="#bfdbfe" stroke-width="1.8" stroke-linejoin="round"/>
+  <text x="54" y="31" fill="#f8fafc" font-family="Inter, Segoe UI, sans-serif" font-size="12" font-weight="750" letter-spacing="1.1">DELIVERY INTELLIGENCE</text>
+  <text x="54" y="47" fill="#9aa8bb" font-family="Inter, Segoe UI, sans-serif" font-size="10">Operational Analytics Platform</text>
+</svg>

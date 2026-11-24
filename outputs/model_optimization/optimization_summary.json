@@ -1,0 +1,357 @@
+{
+  "experiment": "Manthan Model Optimization V2",
+  "diagnostic_only_for_v1": false,
+  "random_state": 42,
+  "sla_minutes": 30,
+  "sla_is_official_promise": false,
+  "features": [
+    "Order_Date",
+    "Time_Orderd",
+    "Type_of_order",
+    "City",
+    "Festival",
+    "distance_km"
+  ],
+  "targets": {
+    "regression": "delivery_time",
+    "classification": "is_late"
+  },
+  "split": [
+    {
+      "partition": "train",
+      "rows": 30739,
+      "first_date": "2022-02-11",
+      "last_date": "2022-03-23",
+      "late_rate": 0.3010182504310485
+    },
+    {
+      "partition": "validation",
+      "rows": 7525,
+      "first_date": "2022-03-24",
+      "last_date": "2022-03-30",
+      "late_rate": 0.28066445182724253
+    },
+    {
+      "partition": "test",
+      "rows": 7329,
+      "first_date": "2022-03-31",
+      "last_date": "2022-04-06",
+      "late_rate": 0.3057715923045436
+    }
+  ],
+  "preprocessing_fit_partition": "train only",
+  "distance_availability_assumption": "distance_km assumes selected-store and customer coordinates are available before prediction; verify this operational timing before deployment.",
+  "excluded_fields": [
+    "IDs",
+    "delivery_time from classification inputs",
+    "is_late from regression inputs",
+    "Time_Order_picked",
+    "rider fields",
+    "vehicle fields",
+    "weather",
+    "traffic",
+    "post-order or target-derived fields"
+  ],
+  "selection_rules": {
+    "regression": "Lowest validation MAE; V2 preferred only if validation MAE improves and the train-validation MAE gap narrows.",
+    "classification": "Highest validation PR-AUC; V2 preferred only if validation PR-AUC improves and the absolute train-validation PR-AUC gap narrows.",
+    "threshold": "V2 maximum validation F1 over 0.05..0.95 by 0.01; ties prefer the higher threshold. Not cost-optimal."
+  },
+  "v1_validation": {
+    "regression": {
+      "train": {
+        "mae": 3.3098757084774637,
+        "rmse": 4.246847759368195,
+        "r2": 0.7951005988290107
+      },
+      "validation": {
+        "mae": 6.2518650109474985,
+        "rmse": 7.847447988521355,
+        "r2": 0.2936752020972535
+      },
+      "mae_gap": 2.9419893024700348
+    },
+    "classification": {
+      "train_roc_auc": 0.9977237558694116,
+      "validation_roc_auc": 0.77856522807047,
+      "train_pr_auc": 0.9945177234962916,
+      "validation_pr_auc": 0.5816859018685079,
+      "threshold_0.29_validation": {
+        "threshold": 0.29,
+        "roc_auc": 0.77856522807047,
+        "pr_auc": 0.5816859018685079,
+        "precision": 0.4465863453815261,
+        "recall": 0.7897727272727273,
+        "f1": 0.5705489994869164,
+        "accuracy": 0.666312292358804,
+        "balanced_accuracy": 0.703957119224762,
+        "confusion_matrix": [
+          [
+            3346,
+            2067
+          ],
+          [
+            444,
+            1668
+          ]
+        ]
+      },
+      "threshold_0.50_validation": {
+        "threshold": 0.5,
+        "roc_auc": 0.77856522807047,
+        "pr_auc": 0.5816859018685079,
+        "precision": 0.5456865747830526,
+        "recall": 0.506155303030303,
+        "f1": 0.5251780889216409,
+        "accuracy": 0.7431229235880399,
+        "balanced_accuracy": 0.6708681558565519,
+        "confusion_matrix": [
+          [
+            4523,
+            890
+          ],
+          [
+            1043,
+            1069
+          ]
+        ]
+      },
+      "pr_auc_gap": 0.41283182162778376
+    }
+  },
+  "v2_selected": {
+    "regression_model": "HistGradientBoosting",
+    "regression_train": {
+      "mae": 6.012203108987825,
+      "rmse": 7.490929383503338,
+      "r2": 0.3625021715140325
+    },
+    "regression_validation": {
+      "mae": 5.985032195308396,
+      "rmse": 7.492561391874796,
+      "r2": 0.3561151862812979
+    },
+    "regression_mae_gap": 0.02717091367942981,
+    "regression_validation_improved_vs_v1": true,
+    "regression_gap_reduced_vs_v1": true,
+    "prefer_v2_regression": true,
+    "classification_model": "HistGradientBoosting_balanced",
+    "classification_train_roc_auc": 0.8101617248971,
+    "classification_validation_roc_auc": 0.8081357257920047,
+    "classification_train_pr_auc": 0.6351528947690899,
+    "classification_validation_pr_auc": 0.6226708492206422,
+    "classification_pr_auc_gap": 0.012482045548447673,
+    "classification_validation_improved_vs_v1": true,
+    "classification_gap_reduced_vs_v1": true,
+    "prefer_v2_classification": true,
+    "threshold": 0.48,
+    "validation_threshold_metrics": {
+      "0.29": {
+        "threshold": 0.29,
+        "roc_auc": 0.8081357257920047,
+        "pr_auc": 0.6226708492206422,
+        "precision": 0.3832095945174186,
+        "recall": 0.953125,
+        "f1": 0.5466395112016293,
+        "accuracy": 0.5562790697674419,
+        "balanced_accuracy": 0.6772829877147608,
+        "confusion_matrix": [
+          [
+            2173,
+            3240
+          ],
+          [
+            99,
+            2013
+          ]
+        ]
+      },
+      "0.5": {
+        "threshold": 0.5,
+        "roc_auc": 0.8081357257920047,
+        "pr_auc": 0.6226708492206422,
+        "precision": 0.4835829493087558,
+        "recall": 0.7949810606060606,
+        "f1": 0.6013610315186246,
+        "accuracy": 0.7041860465116279,
+        "balanced_accuracy": 0.7318707261278963,
+        "confusion_matrix": [
+          [
+            3620,
+            1793
+          ],
+          [
+            433,
+            1679
+          ]
+        ]
+      },
+      "0.48": {
+        "threshold": 0.48,
+        "roc_auc": 0.8081357257920047,
+        "pr_auc": 0.6226708492206422,
+        "precision": 0.48251551043429214,
+        "recall": 0.8101325757575758,
+        "f1": 0.6048073524213503,
+        "accuracy": 0.7028571428571428,
+        "balanced_accuracy": 0.7355669344703268,
+        "confusion_matrix": [
+          [
+            3578,
+            1835
+          ],
+          [
+            401,
+            1711
+          ]
+        ]
+      }
+    },
+    "scores_are_calibrated_probabilities": false
+  },
+  "test_evaluation_after_selection_only": {
+    "V1": {
+      "regression": {
+        "mae": 6.272236842355148,
+        "rmse": 7.861579531549085,
+        "r2": 0.3030620218899758
+      },
+      "classification_at_0.29": {
+        "threshold": 0.29,
+        "roc_auc": 0.777742346043854,
+        "pr_auc": 0.599492005584682,
+        "precision": 0.4606630380999505,
+        "recall": 0.8308790718429273,
+        "f1": 0.5927104886200859,
+        "accuracy": 0.6508391322144904,
+        "balanced_accuracy": 0.7012099761730359,
+        "confusion_matrix": [
+          [
+            2908,
+            2180
+          ],
+          [
+            379,
+            1862
+          ]
+        ]
+      },
+      "classification_at_0.50": {
+        "threshold": 0.5,
+        "roc_auc": 0.777742346043854,
+        "pr_auc": 0.599492005584682,
+        "precision": 0.5644171779141104,
+        "recall": 0.533690316822847,
+        "f1": 0.5486238532110091,
+        "accuracy": 0.7314776913630782,
+        "balanced_accuracy": 0.6761415420592223,
+        "confusion_matrix": [
+          [
+            4165,
+            923
+          ],
+          [
+            1045,
+            1196
+          ]
+        ]
+      },
+      "classification_at_selected_threshold": {
+        "threshold": 0.29,
+        "roc_auc": 0.777742346043854,
+        "pr_auc": 0.599492005584682,
+        "precision": 0.4606630380999505,
+        "recall": 0.8308790718429273,
+        "f1": 0.5927104886200859,
+        "accuracy": 0.6508391322144904,
+        "balanced_accuracy": 0.7012099761730359,
+        "confusion_matrix": [
+          [
+            2908,
+            2180
+          ],
+          [
+            379,
+            1862
+          ]
+        ]
+      }
+    },
+    "V2_experimental": {
+      "regression": {
+        "mae": 6.128532296130478,
+        "rmse": 7.652210188104011,
+        "r2": 0.33968937186460624
+      },
+      "classification_at_0.29": {
+        "threshold": 0.29,
+        "roc_auc": 0.7977727647136414,
+        "pr_auc": 0.6265952861670265,
+        "precision": 0.40111940298507465,
+        "recall": 0.9593931280678268,
+        "f1": 0.5657150374950665,
+        "accuracy": 0.5495974894255696,
+        "balanced_accuracy": 0.6642484508263662,
+        "confusion_matrix": [
+          [
+            1878,
+            3210
+          ],
+          [
+            91,
+            2150
+          ]
+        ]
+      },
+      "classification_at_0.50": {
+        "threshold": 0.5,
+        "roc_auc": 0.7977727647136414,
+        "pr_auc": 0.6265952861670265,
+        "precision": 0.499719416386083,
+        "recall": 0.7947344935296743,
+        "f1": 0.6136089577950044,
+        "accuracy": 0.6939555191704189,
+        "balanced_accuracy": 0.7221510517962837,
+        "confusion_matrix": [
+          [
+            3305,
+            1783
+          ],
+          [
+            460,
+            1781
+          ]
+        ]
+      },
+      "classification_at_selected_threshold": {
+        "threshold": 0.48,
+        "roc_auc": 0.7977727647136414,
+        "pr_auc": 0.6265952861670265,
+        "precision": 0.4929276754737123,
+        "recall": 0.824185631414547,
+        "f1": 0.6169004676018705,
+        "accuracy": 0.6869968617819621,
+        "balanced_accuracy": 0.7253789792292862,
+        "confusion_matrix": [
+          [
+            3188,
+            1900
+          ],
+          [
+            394,
+            1847
+          ]
+        ]
+      }
+    }
+  },
+  "hypotheses_not_proven": [
+    "Constrained capacity may reduce train-specific fitting.",
+    "Unobserved operational inputs and food-delivery versus quick-commerce differences may limit performance.",
+    "distance_km timing and missingness may affect operational usefulness."
+  ],
+  "preferred_models": {
+    "regression": "V2 experimental",
+    "classification": "V2 experimental"
+  }
+}

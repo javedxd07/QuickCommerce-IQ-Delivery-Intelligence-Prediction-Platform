@@ -1,0 +1,23 @@
+{
+  "model": "DBSCAN",
+  "metric": "haversine",
+  "coordinates_converted_to_radians": true,
+  "selected_eps_km": 1.56069349119838,
+  "selected_eps_radians": 0.000244968032566268,
+  "selected_min_samples": 15,
+  "min_samples_selection_evidence": "min_samples=5 and 10 k-distance curves are dominated by zero distances from repeated coordinates; 15-neighbor curve yields a positive observed knee and density support of 15 records.",
+  "eps_selection_evidence": "Sorted 15-neighbor Haversine k-distance knee converted to kilometres.",
+  "selected_hotspots": 132,
+  "maximum_hotspot_radius_p95_from_centroid_km": 11.39313066734248,
+  "maximum_hotspot_radius_from_centroid_km": 13.745107936472376,
+  "component_extent_caution": "eps constrains neighboring core-point distance, not full component extent; DBSCAN density connectivity can chain across a wider region.",
+  "noise_orders": 651,
+  "noise_pct_of_valid_customer_gps": 1.5517364669987843,
+  "invalid_or_unavailable_customer_gps_orders": 3640,
+  "demand_benchmark_orders": 41953,
+  "network_average_delivery_time_minutes": 26.311539103282243,
+  "network_late_rate": 0.2993588062832217,
+  "centroids_are_confirmed_dark_store_sites": false,
+  "geographic_label_limitation": "City values are service categories, not actual city/locality names.",
+  "data_applicability": "Restaurant food-delivery coordinates are a proxy for quick-commerce demand."
+}

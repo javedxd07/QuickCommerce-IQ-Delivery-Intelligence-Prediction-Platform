@@ -1,0 +1,147 @@
+{
+  "manifest_version": "1.0",
+  "project": "Quick-Commerce Delivery Intelligence",
+  "module": "PS6-PS8",
+  "sla_minutes": 30,
+  "sla_status": "analytical threshold; not an official customer promise",
+  "dbscan_parameters": {
+    "eps_km": 1.56069349119838,
+    "eps_radians": 0.000244968032566268,
+    "min_samples": 15,
+    "metric": "haversine"
+  },
+  "applicability_limitation": "Restaurant food-delivery data is used as a proxy for quick-commerce operations. Clusters are demand-zone candidates, not confirmed optimal store locations. Do not generalize without validation on actual quick-commerce data.",
+  "rider_experience_limitation": "Rider professional experience/tenure is not present; age is not used as a substitute.",
+  "outputs": [
+    {
+      "path": "outputs/ps6/dbscan_hotspot_assignments.csv",
+      "grain": "one row per source order",
+      "description": "Haversine DBSCAN labels; -2 invalid GPS, -1 noise, nonnegative labels hotspots."
+    },
+    {
+      "path": "outputs/ps6/hotspot_summary.csv",
+      "grain": "one row per DBSCAN hotspot",
+      "description": "Demand, delivery time, late rate, network differences, and coordinate centroid."
+    },
+    {
+      "path": "outputs/ps6/dbscan_parameter_diagnostics.csv",
+      "grain": "one row per parameter scenario",
+      "description": "Cluster counts, noise counts, and size diagnostics for eps/min_samples sensitivity."
+    },
+    {
+      "path": "outputs/ps6/k_distance_analysis.csv",
+      "grain": "one row per min_samples candidate",
+      "description": "Data-derived Haversine k-distance knees and duplicate-coordinate diagnostics."
+    },
+    {
+      "path": "outputs/ps6/dbscan_k_distance_analysis.png",
+      "grain": "figure",
+      "description": "Sorted Haversine k-distance curves and selected eps."
+    },
+    {
+      "path": "outputs/ps6/dbscan_hotspots_map.html",
+      "grain": "interactive map",
+      "description": "Folium hotspot centroids and separately styled DBSCAN noise points."
+    },
+    {
+      "path": "outputs/ps6/kmeans_vs_dbscan_comparison.png",
+      "grain": "figure",
+      "description": "Original broad K-Means assignments versus refined DBSCAN hotspots/noise."
+    },
+    {
+      "path": "outputs/ps6/clustering_method_comparison.csv",
+      "grain": "one row per method",
+      "description": "Broad K-Means and local DBSCAN cluster/noise counts."
+    },
+    {
+      "path": "outputs/ps6/dbscan_model_metadata.json",
+      "grain": "model metadata",
+      "description": "DBSCAN parameter evidence, noise, and geographic limitations."
+    },
+    {
+      "path": "models/ps6_customer_hotspot_dbscan.joblib",
+      "grain": "fitted estimator",
+      "description": "Fitted DBSCAN training result; use metadata for input preprocessing and parameters."
+    },
+    {
+      "path": "outputs/ps6/customer_zone_assignments.csv",
+      "grain": "one row per source order",
+      "description": "Zone labels for valid customer GPS records; -1 denotes invalid/unavailable GPS."
+    },
+    {
+      "path": "outputs/ps6/zone_summary.csv",
+      "grain": "one row per zone cluster",
+      "description": "Demand, average time, late rate, centroid, and network benchmark comparisons."
+    },
+    {
+      "path": "outputs/ps6/cluster_selection_metrics.csv",
+      "grain": "one row per candidate k",
+      "description": "Zone inertia and sampled silhouette scores."
+    },
+    {
+      "path": "outputs/ps6/customer_demand_zones.png",
+      "grain": "figure",
+      "description": "Geographic demand-cluster map and candidate centroids."
+    },
+    {
+      "path": "outputs/ps6/zone_cluster_selection.png",
+      "grain": "figure",
+      "description": "Zone elbow and silhouette diagnostics."
+    },
+    {
+      "path": "outputs/ps6/zone_model_metadata.json",
+      "grain": "model metadata",
+      "description": "Zone model selection, coordinate projection, and limitations."
+    },
+    {
+      "path": "models/ps6_customer_zone_kmeans.joblib",
+      "grain": "fitted model",
+      "description": "K-Means model for projected customer delivery locations."
+    },
+    {
+      "path": "outputs/ps7/rider_segment_assignments.csv",
+      "grain": "one row per rider",
+      "description": "Rider-level observed features and cluster labels."
+    },
+    {
+      "path": "outputs/ps7/rider_segment_profiles.csv",
+      "grain": "one row per rider segment",
+      "description": "Segment names and aggregate profiles."
+    },
+    {
+      "path": "outputs/ps7/cluster_selection_metrics.csv",
+      "grain": "one row per candidate k",
+      "description": "Rider inertia and silhouette diagnostics."
+    },
+    {
+      "path": "outputs/ps7/rider_segment_profiles.png",
+      "grain": "figure",
+      "description": "Segment characteristic comparison."
+    },
+    {
+      "path": "outputs/ps7/rider_cluster_selection.png",
+      "grain": "figure",
+      "description": "Rider elbow and silhouette diagnostics."
+    },
+    {
+      "path": "outputs/ps7/rider_model_metadata.json",
+      "grain": "model metadata",
+      "description": "Rider feature definitions, selection, and missing-rating treatment."
+    },
+    {
+      "path": "models/ps7_rider_segment_pipeline.joblib",
+      "grain": "fitted pipeline",
+      "description": "Median imputation, scaling, and rider K-Means."
+    },
+    {
+      "path": "outputs/ps8/recommendations.json",
+      "grain": "exactly three recommendations",
+      "description": "Prioritized evidence-based actions with projected benefits."
+    },
+    {
+      "path": "outputs/ps8/recommendations.txt",
+      "grain": "human-readable report",
+      "description": "Three recommendations for management review."
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+issue,affected_records,treatment,records_removed
+Missing values and sentinels,4225,Standardize blank/sentinel values to missing; retain incomplete rows and do not impute.,0
+Exact duplicate rows,0,"Drop repeated exact rows, keeping the first copy.",0
+Invalid rider ages,38,"Validate with inclusive 18-80 rule; set invalid/unparseable cleaned values missing, preserve raw age and row-level flags, and retain orders.",0
+Invalid rider ratings,53,Set values outside 1–5 or unparseable ratings to missing; retain orders.,0
+Invalid/suspicious GPS records,3640,Set each affected coordinate pair to missing; retain orders and do not invent coordinates.,0
+Malformed nonempty dates/times,0,Set malformed date/time fields to missing; retain orders.,0
+Missing order times,1731,Keep as missing; do not infer an order time.,0
+Invalid/missing/nonpositive delivery target,0,Remove rows because delivery-time outcome is unusable.,0
+IQR delivery-time outliers,270,Flag only; retain since an IQR flag alone does not establish a data error.,0
+Categorical formatting/known spelling,45593,"Trim labels, remove weather prefix, and standardize Metropolitian to Metropolitan; preserve other labels.",0

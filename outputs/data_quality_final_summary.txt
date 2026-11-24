@@ -1,0 +1,25 @@
+Quick-Commerce Delivery Intelligence ? Problem Statement 1: Missing Value Treatment
+
+Original dataset shape: (45593, 20)
+Pre-treatment rows: 45,593
+Final cleaned dataset shape: (45593, 30)
+Records retained / excluded from final export: 45,593 / 0
+Missing cells before / after treatment: 23,782 / 16,291
+Originally absent / invalidated by validation: 9,131 / 14,651
+Median values used: Delivery_person_Age=30, Delivery_person_Ratings=4.7, multiple_deliveries=1
+Invalid GPS records preserved / excluded from geographic analysis: 3,640 / 3,640
+Missing delivery targets / excluded from supervised training: 0 / 0
+
+Final observations:
+- The source contains 45,593 records and 20 original columns; 45,593 records are retained in the final export.
+- 23,782 missing cells existed before treatment (9,131 originally absent; 14,651 invalidated by validation); 16,291 remain afterward.
+- Age values are validated against the inclusive 18-80 rule; 38 invalid/unparseable ages are audited, their raw values and flags are preserved, and median imputation is used only in the descriptive export.
+- For consistency across the project, rider age values are considered valid for analysis when they fall between 18 and 80 years, inclusive. This is a data-validation rule and does not represent rider professional experience.
+- Rider rating and multiple-delivery count use their observed medians; selected categorical fields use Unknown.
+- 3,640 records with invalid/suspicious GPS remain available for non-geographic work and are flagged out of geographic analysis.
+- Timestamp gaps are preserved with missing indicators. No timestamp or coordinate is invented.
+- 0 delivery-time targets are missing; these are not imputed and would be excluded from supervised training.
+- For future machine learning, split first and fit preprocessing only on training data; the displayed pipeline demonstrates that practice without training a model.
+
+Important: final_cleaned_data.csv uses dataset-wide medians for this descriptive cleaning deliverable. Do not use it as a pre-split model matrix. For machine learning, start from data/cleaned_data.csv, split first, then fit a Pipeline/ColumnTransformer only on training data.
+Invalid GPS pairs and missing timestamps remain missing. No coordinate or timestamp was invented. No rows were removed in the missing-value treatment step.

@@ -1,0 +1,53 @@
+column,group,available_at_order_placement,in_regression_features,in_classification_features,reason,availability_assumption
+ID,Identifier/quality/audit field,False,False,False,Excluded to avoid leakage or use of audit metadata.,Not used as an order-placement input.
+Delivery_person_ID,B: post-order,False,False,False,Dispatch/rider/pickup information is not available at placement.,Not used as an order-placement input.
+Delivery_person_Age,B: post-order,False,False,False,Dispatch/rider/pickup information is not available at placement.,Not used as an order-placement input.
+Delivery_person_Ratings,B: post-order,False,False,False,Dispatch/rider/pickup information is not available at placement.,Not used as an order-placement input.
+Restaurant_latitude,Location source,,False,False,Used only to validate distance; raw coordinates excluded as inputs.,Not used as an order-placement input.
+Restaurant_longitude,Location source,,False,False,Used only to validate distance; raw coordinates excluded as inputs.,Not used as an order-placement input.
+Delivery_location_latitude,Location source,,False,False,Used only to validate distance; raw coordinates excluded as inputs.,Not used as an order-placement input.
+Delivery_location_longitude,Location source,,False,False,Used only to validate distance; raw coordinates excluded as inputs.,Not used as an order-placement input.
+Order_Date,A: placement candidate,True,True,True,Assumes the order calendar date is recorded at submission.,Assumes the order calendar date is recorded at submission.
+Time_Orderd,A: placement candidate,True,True,True,"Assumes this is the order-submission time, not a later derived timestamp.","Assumes this is the order-submission time, not a later derived timestamp."
+Time_Order_picked,B: post-order,False,False,False,Dispatch/rider/pickup information is not available at placement.,Not used as an order-placement input.
+Weatherconditions,Timing unverified,,False,False,Conservatively excluded until capture timing is confirmed.,Not used as an order-placement input.
+Road_traffic_density,Timing unverified,,False,False,Conservatively excluded until capture timing is confirmed.,Not used as an order-placement input.
+Vehicle_condition,B: post-order,False,False,False,Dispatch/rider/pickup information is not available at placement.,Not used as an order-placement input.
+Type_of_order,A: placement candidate,True,True,True,Assumes the customer-selected order category is known at submission.,Assumes the customer-selected order category is known at submission.
+Type_of_vehicle,B: post-order,False,False,False,Dispatch/rider/pickup information is not available at placement.,Not used as an order-placement input.
+multiple_deliveries,B: post-order,False,False,False,Dispatch/rider/pickup information is not available at placement.,Not used as an order-placement input.
+Festival,A: placement candidate,True,True,True,Assumes the date/location calendar flag is derivable before the order-placement prediction.,Assumes the date/location calendar flag is derivable before the order-placement prediction.
+City,A: placement candidate,True,True,True,Assumes the destination city/service area is known from the order address at submission.,Assumes the destination city/service area is known from the order address at submission.
+Time_taken(min),C: target,False,False,False,Outcome; never a model input.,Not used as an order-placement input.
+Delivery_person_Age_original,Identifier/quality/audit field,False,False,False,Excluded to avoid leakage or use of audit metadata.,Not used as an order-placement input.
+Delivery_person_Age_invalid,Identifier/quality/audit field,False,False,False,Excluded to avoid leakage or use of audit metadata.,Not used as an order-placement input.
+Delivery_person_Age_unparseable,Identifier/quality/audit field,False,False,False,Excluded to avoid leakage or use of audit metadata.,Not used as an order-placement input.
+restaurant_gps_invalid,Identifier/quality/audit field,False,False,False,Excluded to avoid leakage or use of audit metadata.,Not used as an order-placement input.
+delivery_gps_invalid,Identifier/quality/audit field,False,False,False,Excluded to avoid leakage or use of audit metadata.,Not used as an order-placement input.
+gps_invalid_any,Identifier/quality/audit field,False,False,False,Excluded to avoid leakage or use of audit metadata.,Not used as an order-placement input.
+gps_geographic_eligible,Identifier/quality/audit field,False,False,False,Excluded to avoid leakage or use of audit metadata.,Not used as an order-placement input.
+Order_Date_missing,Identifier/quality/audit field,False,False,False,Excluded to avoid leakage or use of audit metadata.,Not used as an order-placement input.
+Time_Orderd_missing,Identifier/quality/audit field,False,False,False,Excluded to avoid leakage or use of audit metadata.,Not used as an order-placement input.
+Time_Order_picked_missing,Identifier/quality/audit field,False,False,False,Excluded to avoid leakage or use of audit metadata.,Not used as an order-placement input.
+Vehicle_condition_original,B: post-order,False,False,False,Dispatch/rider/pickup information is not available at placement.,Not used as an order-placement input.
+Vehicle_condition_invalid,B: post-order,False,False,False,Dispatch/rider/pickup information is not available at placement.,Not used as an order-placement input.
+restaurant_gps_missing,Identifier/quality/audit field,False,False,False,Excluded to avoid leakage or use of audit metadata.,Not used as an order-placement input.
+restaurant_gps_zero,Identifier/quality/audit field,False,False,False,Excluded to avoid leakage or use of audit metadata.,Not used as an order-placement input.
+restaurant_gps_placeholder,Identifier/quality/audit field,False,False,False,Excluded to avoid leakage or use of audit metadata.,Not used as an order-placement input.
+restaurant_gps_out_of_global_range,Identifier/quality/audit field,False,False,False,Excluded to avoid leakage or use of audit metadata.,Not used as an order-placement input.
+restaurant_gps_outside_india,Identifier/quality/audit field,False,False,False,Excluded to avoid leakage or use of audit metadata.,Not used as an order-placement input.
+restaurant_gps_valid,Identifier/quality/audit field,False,False,False,Excluded to avoid leakage or use of audit metadata.,Not used as an order-placement input.
+restaurant_source_zero_placeholder,Identifier/quality/audit field,False,False,False,Excluded to avoid leakage or use of audit metadata.,Not used as an order-placement input.
+delivery_gps_missing,Identifier/quality/audit field,False,False,False,Excluded to avoid leakage or use of audit metadata.,Not used as an order-placement input.
+delivery_gps_zero,Identifier/quality/audit field,False,False,False,Excluded to avoid leakage or use of audit metadata.,Not used as an order-placement input.
+delivery_gps_placeholder,Identifier/quality/audit field,False,False,False,Excluded to avoid leakage or use of audit metadata.,Not used as an order-placement input.
+delivery_gps_out_of_global_range,Identifier/quality/audit field,False,False,False,Excluded to avoid leakage or use of audit metadata.,Not used as an order-placement input.
+delivery_gps_outside_india,Identifier/quality/audit field,False,False,False,Excluded to avoid leakage or use of audit metadata.,Not used as an order-placement input.
+delivery_gps_valid,Identifier/quality/audit field,False,False,False,Excluded to avoid leakage or use of audit metadata.,Not used as an order-placement input.
+delivery_source_zero_placeholder,Identifier/quality/audit field,False,False,False,Excluded to avoid leakage or use of audit metadata.,Not used as an order-placement input.
+gps_missing_any,Identifier/quality/audit field,False,False,False,Excluded to avoid leakage or use of audit metadata.,Not used as an order-placement input.
+gps_zero_or_placeholder_source,Identifier/quality/audit field,False,False,False,Excluded to avoid leakage or use of audit metadata.,Not used as an order-placement input.
+distance_unusual_iqr,Identifier/quality/audit field,False,False,False,Excluded to avoid leakage or use of audit metadata.,Not used as an order-placement input.
+delivery_time,C: target,False,False,False,Outcome; never a model input.,Not used as an order-placement input.
+is_late,C: target,False,False,False,Outcome; never a model input.,Not used as an order-placement input.
+distance_km,A: placement candidate,True,True,True,Assumes the selected restaurant/dark store and customer destination coordinates are known before prediction; verify store-selection timing in the operational workflow.,Assumes the selected restaurant/dark store and customer destination coordinates are known before prediction; verify store-selection timing in the operational workflow.

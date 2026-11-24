@@ -1,0 +1,37 @@
+metric,record_count,detail,treatment_or_interpretation
+Total records,45593,Rows in existing final dataset.,Retain all records.
+Missing GPS records,3640,At least one restaurant or delivery coordinate pair is missing.,Retain; exclude from geographic calculations.
+"Restaurant (0,0) source placeholders",3640,Observed in the untouched source before earlier cleaning.,Keep source evidence flag; do not impute.
+Delivery near-origin source pattern,3640,"Both delivery coordinates are equal and below one degree in absolute value; this broad pattern includes (0.01, 0.01).",Keep source evidence flag; do not impute.
+"Delivery (0.01, 0.01) source placeholders",327,Exact paired placeholder values in the untouched source.,Keep source evidence flag; do not impute.
+Missing GPS coordinate cells,14560,Missing values across the four coordinate columns.,Retain missing; do not impute.
+Restaurant_latitude observed source range,45593,"min=-30.9056, max=30.9141; broad India bounds=6.5..37.5.",Validate against global limits and broad India screening bounds; do not impute.
+Restaurant_latitude source zeros,3640,Count of source rows where this coordinate equals zero.,Flag coordinate pair; retain row and do not impute.
+Restaurant_latitude current missing values,3640,Missing coordinate values in the current final dataset.,Retain missing; exclude the coordinate pair from geography.
+Restaurant_latitude source out of global range,0,Outside legal coordinate range -90..90.,Flag pair invalid; retain row.
+Restaurant_latitude source outside India bounds,4071,Outside broad India screen 6.5..37.5.,Flag pair invalid; retain recorded coordinate and row.
+Restaurant_longitude observed source range,45593,"min=-88.3662, max=88.4335; broad India bounds=68..98.",Validate against global limits and broad India screening bounds; do not impute.
+Restaurant_longitude source zeros,3640,Count of source rows where this coordinate equals zero.,Flag coordinate pair; retain row and do not impute.
+Restaurant_longitude current missing values,3640,Missing coordinate values in the current final dataset.,Retain missing; exclude the coordinate pair from geography.
+Restaurant_longitude source out of global range,0,Outside legal coordinate range -180..180.,Flag pair invalid; retain row.
+Restaurant_longitude source outside India bounds,3802,Outside broad India screen 68.0..98.0.,Flag pair invalid; retain recorded coordinate and row.
+Delivery_location_latitude observed source range,45593,"min=0.01, max=31.0541; broad India bounds=6.5..37.5.",Validate against global limits and broad India screening bounds; do not impute.
+Delivery_location_latitude source zeros,0,Count of source rows where this coordinate equals zero.,Flag coordinate pair; retain row and do not impute.
+Delivery_location_latitude current missing values,3640,Missing coordinate values in the current final dataset.,Retain missing; exclude the coordinate pair from geography.
+Delivery_location_latitude source out of global range,0,Outside legal coordinate range -90..90.,Flag pair invalid; retain row.
+Delivery_location_latitude source outside India bounds,3640,Outside broad India screen 6.5..37.5.,Flag pair invalid; retain recorded coordinate and row.
+Delivery_location_longitude observed source range,45593,"min=0.01, max=88.5635; broad India bounds=68..98.",Validate against global limits and broad India screening bounds; do not impute.
+Delivery_location_longitude source zeros,0,Count of source rows where this coordinate equals zero.,Flag coordinate pair; retain row and do not impute.
+Delivery_location_longitude current missing values,3640,Missing coordinate values in the current final dataset.,Retain missing; exclude the coordinate pair from geography.
+Delivery_location_longitude source out of global range,0,Outside legal coordinate range -180..180.,Flag pair invalid; retain row.
+Delivery_location_longitude source outside India bounds,3640,Outside broad India screen 68.0..98.0.,Flag pair invalid; retain recorded coordinate and row.
+Current zero-coordinate records,0,Any coordinate is exactly zero in the current final dataset.,Flag and exclude geographically.
+Out-of-global-range GPS records,0,"Latitude outside [-90, 90] or longitude outside [-180, 180].",Flag and exclude geographically.
+Outside broad India bounds records,431,"At least one coordinate pair lies outside 6.5 to 37.5 degrees N, 68 to 98 degrees E.",Flag and exclude geographically; retain recorded values.
+Invalid GPS records,4071,"Unique records with missing, zero, placeholder, out-of-range, or outside-India coordinates.",Preserve rows and coordinates; do not use for distance/geographic clustering.
+Valid GPS records,41522,Both restaurant and delivery pairs are present and pass checks.,Eligible for distance/geographic analysis.
+Distance calculation successes,41522,Valid GPS rows with a finite computed Haversine distance.,Distance stored in Distance_km.
+Valid-GPS rows without distance,0,A valid GPS row unexpectedly lacks distance.,Validation must be zero; investigate if nonzero.
+Non-negative finite calculated distances,41522,Checked all calculated distances.,Validation must equal distance calculation successes.
+Unusual distance records,0,Distance above 1.5 times the IQR upper fence (27.216 km).,Flag for investigation; do not delete.
+Records removed,0,No rows removed by this final audit.,None.

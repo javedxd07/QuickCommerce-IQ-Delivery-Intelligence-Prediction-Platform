@@ -1,0 +1,7 @@
+vehicle_condition_original,record_count,percent_of_records,valid_documented_value,treatment
+0,15009,32.92,True,Retain value
+1,15030,32.97,True,Retain value
+2,15034,32.97,True,Retain value
+3,520,1.14,False,Preserve in Vehicle_condition_original; flag and set Vehicle_condition missing
+INVALID_TOTAL,520,1.14,False,Preserve original; flag and convert Vehicle_condition to missing
+RECORDS_REMOVED,0,0.0,,None

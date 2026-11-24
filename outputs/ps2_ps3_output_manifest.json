@@ -1,0 +1,248 @@
+{
+  "manifest_version": "1.0",
+  "project": "Quick-Commerce Delivery Intelligence",
+  "sla_status": "analytical_threshold_not_official_sla",
+  "feature_availability_source": "outputs/ps2/feature_availability_report.csv",
+  "order_placement_features": {
+    "regression": [
+      "Order_Date",
+      "Time_Orderd",
+      "Type_of_order",
+      "City",
+      "Festival",
+      "distance_km"
+    ],
+    "classification": [
+      "Order_Date",
+      "Time_Orderd",
+      "Type_of_order",
+      "City",
+      "Festival",
+      "distance_km"
+    ],
+    "targets": [
+      "Time_taken(min)",
+      "delivery_time",
+      "is_late"
+    ],
+    "availability_assumptions": {
+      "Order_Date": "Assumes the order calendar date is recorded at submission.",
+      "Time_Orderd": "Assumes this is the order-submission time, not a later derived timestamp.",
+      "Type_of_order": "Assumes the customer-selected order category is known at submission.",
+      "City": "Assumes the destination city/service area is known from the order address at submission.",
+      "Festival": "Assumes the date/location calendar flag is derivable before the order-placement prediction.",
+      "distance_km": "Assumes the selected restaurant/dark store and customer destination coordinates are known before prediction; verify store-selection timing in the operational workflow."
+    }
+  },
+  "sla": {
+    "minutes": 30,
+    "official_customer_promise_confirmed": false,
+    "description": "Since the official SLA was not specified in the available hackathon requirements, a 30-minute analytical SLA was selected based on the delivery-time distribution. It is used for analytical modelling and operational insights, not as an officially guaranteed delivery promise.",
+    "sensitivity_thresholds": [
+      28,
+      30,
+      32,
+      35
+    ]
+  },
+  "rider_experience": {
+    "available": false,
+    "description": "Rider experience/tenure is unavailable in this dataset; rider age is analyzed separately and is not a proxy."
+  },
+  "dataset_applicability_limitation": "This dataset represents food-delivery operations; results may not generalize to quick-commerce. Actual quick-commerce operational data is required for stronger validation.",
+  "multiple_deliveries": {
+    "meanings_verified": false,
+    "description": "Encoded values are shown neutrally because no local data dictionary was available."
+  },
+  "outputs": [
+    {
+      "filename": "model_ready_data.csv",
+      "relative_path": "data/model_ready_data.csv",
+      "description": "All PS1 rows with unchanged target, 30-minute analytical late labels, and the single canonical distance_km field.",
+      "purpose": "Reusable prepared dataset.",
+      "streamlit_page": "Delay Intelligence"
+    },
+    {
+      "filename": "delay_lens_summary.json",
+      "relative_path": "outputs/ps2/delay_lens_summary.json",
+      "description": "30-minute analytical SLA counts, percentages, sensitivity, feature summary, rider limitation, and dataset applicability.",
+      "purpose": "Summary cards/status.",
+      "streamlit_page": "Delay Intelligence"
+    },
+    {
+      "filename": "feature_availability_report.csv",
+      "relative_path": "outputs/ps2/feature_availability_report.csv",
+      "description": "Timing and leakage decision for each column.",
+      "purpose": "Explain safe prediction inputs.",
+      "streamlit_page": "Model Input Review"
+    },
+    {
+      "filename": "data_validation_report.csv",
+      "relative_path": "outputs/ps2/data_validation_report.csv",
+      "description": "Record, target, GPS, distance, SLA, age-analysis, and applicability checks.",
+      "purpose": "Quality indicators.",
+      "streamlit_page": "Data Quality"
+    },
+    {
+      "filename": "sla_sensitivity_analysis.csv",
+      "relative_path": "outputs/ps2/sla_sensitivity_analysis.csv",
+      "description": "Late-rate sensitivity at 28, 30, 32, and 35 minutes.",
+      "purpose": "Threshold sensitivity display.",
+      "streamlit_page": "Delay Intelligence"
+    },
+    {
+      "filename": "eda_group_summaries.csv",
+      "relative_path": "outputs/eda/eda_group_summaries.csv",
+      "description": "Long-form group counts, means, on-time/late counts, and 30-minute rates.",
+      "purpose": "Interactive descriptive summaries.",
+      "streamlit_page": "Exploratory Analytics"
+    },
+    {
+      "filename": "numeric_correlation_matrix.csv",
+      "relative_path": "outputs/eda/numeric_correlation_matrix.csv",
+      "description": "Pairwise correlation matrix.",
+      "purpose": "Correlation display.",
+      "streamlit_page": "Exploratory Analytics"
+    },
+    {
+      "filename": "key_findings.json",
+      "relative_path": "outputs/eda/key_findings.json",
+      "description": "Three recalculated findings with late rates, evidence, and applicability limitations.",
+      "purpose": "Evidence cards.",
+      "streamlit_page": "Key Findings"
+    },
+    {
+      "filename": "delivery_time_distribution.png",
+      "relative_path": "outputs/eda/delivery_time_distribution.png",
+      "description": "delivery time distribution chart; late rates use the 30-minute analytical threshold where applicable.",
+      "purpose": "Presentation-ready PNG.",
+      "streamlit_page": "Exploratory Analytics"
+    },
+    {
+      "filename": "delivery_time_boxplot.png",
+      "relative_path": "outputs/eda/delivery_time_boxplot.png",
+      "description": "delivery time boxplot chart; late rates use the 30-minute analytical threshold where applicable.",
+      "purpose": "Presentation-ready PNG.",
+      "streamlit_page": "Exploratory Analytics"
+    },
+    {
+      "filename": "sla_sensitivity_analysis.png",
+      "relative_path": "outputs/eda/sla_sensitivity_analysis.png",
+      "description": "sla sensitivity analysis chart; late rates use the 30-minute analytical threshold where applicable.",
+      "purpose": "Presentation-ready PNG.",
+      "streamlit_page": "Exploratory Analytics"
+    },
+    {
+      "filename": "delivery_time_by_order_hour.png",
+      "relative_path": "outputs/eda/delivery_time_by_order_hour.png",
+      "description": "delivery time by order hour chart; late rates use the 30-minute analytical threshold where applicable.",
+      "purpose": "Presentation-ready PNG.",
+      "streamlit_page": "Exploratory Analytics"
+    },
+    {
+      "filename": "late_rate_by_order_hour.png",
+      "relative_path": "outputs/eda/late_rate_by_order_hour.png",
+      "description": "late rate by order hour chart; late rates use the 30-minute analytical threshold where applicable.",
+      "purpose": "Presentation-ready PNG.",
+      "streamlit_page": "Exploratory Analytics"
+    },
+    {
+      "filename": "delivery_time_by_weekday.png",
+      "relative_path": "outputs/eda/delivery_time_by_weekday.png",
+      "description": "delivery time by weekday chart; late rates use the 30-minute analytical threshold where applicable.",
+      "purpose": "Presentation-ready PNG.",
+      "streamlit_page": "Exploratory Analytics"
+    },
+    {
+      "filename": "delivery_time_by_weather.png",
+      "relative_path": "outputs/eda/delivery_time_by_weather.png",
+      "description": "delivery time by weather chart; late rates use the 30-minute analytical threshold where applicable.",
+      "purpose": "Presentation-ready PNG.",
+      "streamlit_page": "Exploratory Analytics"
+    },
+    {
+      "filename": "delivery_time_by_traffic.png",
+      "relative_path": "outputs/eda/delivery_time_by_traffic.png",
+      "description": "delivery time by traffic chart; late rates use the 30-minute analytical threshold where applicable.",
+      "purpose": "Presentation-ready PNG.",
+      "streamlit_page": "Exploratory Analytics"
+    },
+    {
+      "filename": "late_rate_by_weather.png",
+      "relative_path": "outputs/eda/late_rate_by_weather.png",
+      "description": "late rate by weather chart; late rates use the 30-minute analytical threshold where applicable.",
+      "purpose": "Presentation-ready PNG.",
+      "streamlit_page": "Exploratory Analytics"
+    },
+    {
+      "filename": "late_rate_by_traffic.png",
+      "relative_path": "outputs/eda/late_rate_by_traffic.png",
+      "description": "late rate by traffic chart; late rates use the 30-minute analytical threshold where applicable.",
+      "purpose": "Presentation-ready PNG.",
+      "streamlit_page": "Exploratory Analytics"
+    },
+    {
+      "filename": "delivery_time_vs_distance.png",
+      "relative_path": "outputs/eda/delivery_time_vs_distance.png",
+      "description": "delivery time vs distance chart; late rates use the 30-minute analytical threshold where applicable.",
+      "purpose": "Presentation-ready PNG.",
+      "streamlit_page": "Exploratory Analytics"
+    },
+    {
+      "filename": "delivery_time_by_rider_age.png",
+      "relative_path": "outputs/eda/delivery_time_by_rider_age.png",
+      "description": "delivery time by rider age chart; late rates use the 30-minute analytical threshold where applicable.",
+      "purpose": "Presentation-ready PNG.",
+      "streamlit_page": "Exploratory Analytics"
+    },
+    {
+      "filename": "delivery_time_by_rider_rating.png",
+      "relative_path": "outputs/eda/delivery_time_by_rider_rating.png",
+      "description": "delivery time by rider rating chart; late rates use the 30-minute analytical threshold where applicable.",
+      "purpose": "Presentation-ready PNG.",
+      "streamlit_page": "Exploratory Analytics"
+    },
+    {
+      "filename": "delivery_time_by_order_type.png",
+      "relative_path": "outputs/eda/delivery_time_by_order_type.png",
+      "description": "delivery time by order type chart; late rates use the 30-minute analytical threshold where applicable.",
+      "purpose": "Presentation-ready PNG.",
+      "streamlit_page": "Exploratory Analytics"
+    },
+    {
+      "filename": "delivery_time_by_vehicle_type.png",
+      "relative_path": "outputs/eda/delivery_time_by_vehicle_type.png",
+      "description": "delivery time by vehicle type chart; late rates use the 30-minute analytical threshold where applicable.",
+      "purpose": "Presentation-ready PNG.",
+      "streamlit_page": "Exploratory Analytics"
+    },
+    {
+      "filename": "delivery_time_by_multiple_deliveries.png",
+      "relative_path": "outputs/eda/delivery_time_by_multiple_deliveries.png",
+      "description": "delivery time by multiple deliveries chart; late rates use the 30-minute analytical threshold where applicable.",
+      "purpose": "Presentation-ready PNG.",
+      "streamlit_page": "Exploratory Analytics"
+    },
+    {
+      "filename": "delivery_time_by_festival.png",
+      "relative_path": "outputs/eda/delivery_time_by_festival.png",
+      "description": "delivery time by festival chart; late rates use the 30-minute analytical threshold where applicable.",
+      "purpose": "Presentation-ready PNG.",
+      "streamlit_page": "Exploratory Analytics"
+    },
+    {
+      "filename": "delivery_time_by_city.png",
+      "relative_path": "outputs/eda/delivery_time_by_city.png",
+      "description": "delivery time by city chart; late rates use the 30-minute analytical threshold where applicable.",
+      "purpose": "Presentation-ready PNG.",
+      "streamlit_page": "Exploratory Analytics"
+    },
+    {
+      "filename": "correlation_heatmap.png",
+      "relative_path": "outputs/eda/correlation_heatmap.png",
+      "description": "correlation heatmap chart; late rates use the 30-minute analytical threshold where applicable.",
+      "purpose": "Presentation-ready PNG.",
+      "streamlit_page": "Exploratory Analytics"
+    }
+  ]
+}

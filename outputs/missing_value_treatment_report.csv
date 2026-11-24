@@ -1,0 +1,24 @@
+column,originally_absent_cells,invalid_values_converted_to_missing,missing_before_treatment,unattributed_difference,treatment,values_filled,missing_after_treatment
+ID,0,0,0,0,Preserve; no imputation applied,0,0
+Delivery_person_ID,0,0,0,0,Preserve; no imputation applied,0,0
+Delivery_person_Age,1854,38,1892,0,Median imputation (full-data descriptive export; refit train-only for ML),1892,0
+Delivery_person_Ratings,1908,53,1961,0,Median imputation (full-data descriptive export; refit train-only for ML),1961,0
+Restaurant_latitude,0,3640,3640,0,Never impute; preserve missing coordinate and GPS invalid flag,0,3640
+Restaurant_longitude,0,3640,3640,0,Never impute; preserve missing coordinate and GPS invalid flag,0,3640
+Delivery_location_latitude,0,3640,3640,0,Never impute; preserve missing coordinate and GPS invalid flag,0,3640
+Delivery_location_longitude,0,3640,3640,0,Never impute; preserve missing coordinate and GPS invalid flag,0,3640
+Order_Date,0,0,0,0,Preserve missing value; add missing indicator,0,0
+Time_Orderd,1731,0,1731,0,Preserve missing value; add missing indicator,0,1731
+Time_Order_picked,0,0,0,0,Preserve missing value; add missing indicator,0,0
+Weatherconditions,616,0,616,0,Fill with 'Unknown',616,0
+Road_traffic_density,601,0,601,0,Fill with 'Unknown',601,0
+Vehicle_condition,0,0,0,0,Preserve; no imputation applied,0,0
+Type_of_order,0,0,0,0,Preserve; no imputation applied,0,0
+Type_of_vehicle,0,0,0,0,Preserve; no imputation applied,0,0
+multiple_deliveries,993,0,993,0,Median imputation (full-data descriptive export; refit train-only for ML),993,0
+Festival,228,0,228,0,Fill with 'Unknown',228,0
+City,1200,0,1200,0,Fill with 'Unknown',1200,0
+Time_taken(min),0,0,0,0,Never impute; exclude missing-target rows from supervised training only,0,0
+Delivery_person_Age_original,0,0,0,0,Preserve; no imputation applied,0,0
+Delivery_person_Age_invalid,0,0,0,0,Preserve; no imputation applied,0,0
+Delivery_person_Age_unparseable,0,0,0,0,Preserve; no imputation applied,0,0

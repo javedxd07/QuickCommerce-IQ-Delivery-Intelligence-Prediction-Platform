@@ -1,0 +1,147 @@
+{
+  "dataset": {
+    "source": "data/final_cleaned_data.csv",
+    "rows": 45593,
+    "columns": 52,
+    "applicability_limitation": "This dataset represents food-delivery operations; results may not generalize to quick-commerce. Actual quick-commerce operational data is required for stronger validation."
+  },
+  "delivery_time": {
+    "count": 45593,
+    "missing": 0,
+    "mean": 26.29460662821047,
+    "median": 26.0,
+    "minimum": 10.0,
+    "maximum": 54.0
+  },
+  "sla": {
+    "minutes": 30,
+    "status": "analytical_threshold_not_official_sla",
+    "official_customer_promise_confirmed": false,
+    "statement": "Since the official SLA was not specified in the available hackathon requirements, a 30-minute analytical SLA was selected based on the delivery-time distribution. It is used for analytical modelling and operational insights, not as an officially guaranteed delivery promise.",
+    "late_count": 13606,
+    "late_percent": 29.842300353124386,
+    "on_time_count": 31987,
+    "on_time_percent": 70.15769964687561,
+    "valid_target_count": 45593,
+    "missing_target_count": 0,
+    "sensitivity_thresholds": [
+      28,
+      30,
+      32,
+      35
+    ]
+  },
+  "gps": {
+    "valid": 41522,
+    "invalid": 4071,
+    "distance_column": "distance_km",
+    "redundant_ps1_distance_alias_exported": false,
+    "distance_success": 41522,
+    "distance_missing": 4071,
+    "method": "Haversine great-circle distance in kilometres.",
+    "iqr_upper_fence_km": 27.215855380149375,
+    "unusual_retained": 0
+  },
+  "features": {
+    "regression": [
+      "Order_Date",
+      "Time_Orderd",
+      "Type_of_order",
+      "City",
+      "Festival",
+      "distance_km"
+    ],
+    "classification": [
+      "Order_Date",
+      "Time_Orderd",
+      "Type_of_order",
+      "City",
+      "Festival",
+      "distance_km"
+    ],
+    "post_order_excluded": [
+      "Time_Order_picked",
+      "Delivery_person_ID",
+      "Delivery_person_Age",
+      "Delivery_person_Ratings",
+      "Vehicle_condition",
+      "Vehicle_condition_original",
+      "Vehicle_condition_invalid",
+      "Type_of_vehicle",
+      "multiple_deliveries"
+    ],
+    "timing_unverified_excluded": [
+      "Weatherconditions",
+      "Road_traffic_density"
+    ],
+    "targets": [
+      "Time_taken(min)",
+      "delivery_time",
+      "is_late"
+    ],
+    "availability_assumptions": {
+      "Order_Date": "Assumes the order calendar date is recorded at submission.",
+      "Time_Orderd": "Assumes this is the order-submission time, not a later derived timestamp.",
+      "Type_of_order": "Assumes the customer-selected order category is known at submission.",
+      "City": "Assumes the destination city/service area is known from the order address at submission.",
+      "Festival": "Assumes the date/location calendar flag is derivable before the order-placement prediction.",
+      "distance_km": "Assumes the selected restaurant/dark store and customer destination coordinates are known before prediction; verify store-selection timing in the operational workflow."
+    },
+    "authoritative_source": "outputs/ps2/feature_availability_report.csv"
+  },
+  "rider_experience": {
+    "available": false,
+    "limitation": "Rider tenure/years of experience is not present; age is not a substitute.",
+    "age_analysis_range": [
+      18,
+      80
+    ],
+    "age_validation_range": "18-80",
+    "invalid_observed_age_count": 38,
+    "age_rule_note": "Module 02 age summaries use the 18-80 validation range."
+  },
+  "rows_removed": 0,
+  "multiple_deliveries": {
+    "observed_encoded_values": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "meanings_verified": false,
+    "interpretation": "Neutral encoded-value labels; no data dictionary was available."
+  },
+  "eda": {
+    "group_summary": "outputs/eda/eda_group_summaries.csv",
+    "charts": [
+      "outputs/eda/delivery_time_distribution.png",
+      "outputs/eda/delivery_time_boxplot.png",
+      "outputs/eda/sla_sensitivity_analysis.png",
+      "outputs/eda/delivery_time_by_order_hour.png",
+      "outputs/eda/late_rate_by_order_hour.png",
+      "outputs/eda/delivery_time_by_weekday.png",
+      "outputs/eda/delivery_time_by_weather.png",
+      "outputs/eda/delivery_time_by_traffic.png",
+      "outputs/eda/late_rate_by_weather.png",
+      "outputs/eda/late_rate_by_traffic.png",
+      "outputs/eda/delivery_time_vs_distance.png",
+      "outputs/eda/delivery_time_by_rider_age.png",
+      "outputs/eda/delivery_time_by_rider_rating.png",
+      "outputs/eda/delivery_time_by_order_type.png",
+      "outputs/eda/delivery_time_by_vehicle_type.png",
+      "outputs/eda/delivery_time_by_multiple_deliveries.png",
+      "outputs/eda/delivery_time_by_festival.png",
+      "outputs/eda/delivery_time_by_city.png",
+      "outputs/eda/correlation_heatmap.png"
+    ],
+    "chart_count": 19,
+    "distance_pearson": 0.32112734900591117,
+    "distance_spearman": 0.32008358927996633,
+    "missing_order_times_excluded": 1731,
+    "rider_experience_field": null,
+    "rider_limitation": "Rider tenure/experience is unavailable; age is not a substitute.",
+    "dataset_applicability_limitation": "This dataset represents food-delivery operations; results may not generalize to quick-commerce. Actual quick-commerce operational data is required for stronger validation.",
+    "multiple_deliveries_interpretation": "Undocumented encoded values; use neutral labels only.",
+    "sla_sensitivity_report": "outputs/ps2/sla_sensitivity_analysis.csv"
+  }
+}

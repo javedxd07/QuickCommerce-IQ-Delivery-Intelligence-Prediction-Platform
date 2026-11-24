@@ -1,0 +1,26 @@
+{
+  "comparison_role": "Original broad K-Means geographic partition, retained as PS6 comparison.",
+  "model": "KMeans",
+  "selected_k": 6,
+  "selection_rule": "Normalized inertia elbow, then highest silhouette within one k of the elbow.",
+  "elbow_k": 5,
+  "silhouette_search_range": [
+    2,
+    15
+  ],
+  "random_state": 42,
+  "n_init": 10,
+  "cluster_input": [
+    "customer_delivery_latitude",
+    "customer_delivery_longitude"
+  ],
+  "coordinate_projection": "Local equirectangular projection in kilometres using mean input latitude/longitude.",
+  "projection_reference_latitude": 18.975063503134464,
+  "projection_reference_longitude": 76.98707417688843,
+  "valid_customer_gps_records": 41953,
+  "unclustered_records_invalid_or_unavailable_customer_gps": 3640,
+  "centroids_are_confirmed_store_locations": false,
+  "data_applicability": "Restaurant food-delivery data is a proxy for quick-commerce demand; validate with actual quick-commerce operations.",
+  "benchmark_delivery_time_minutes": 26.311539103282243,
+  "benchmark_late_rate": 0.2993588062832217
+}

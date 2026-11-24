@@ -1,0 +1,34 @@
+{
+  "selected_model": "RandomForestRegressor",
+  "selection_rule": "Lowest validation MAE; test data not used for selection.",
+  "validation": {
+    "mae": 6.2518650109474985,
+    "rmse": 7.847447988521355,
+    "r2": 0.2936752020972535
+  },
+  "test": {
+    "mae": 6.272236842355148,
+    "rmse": 7.861579531549085,
+    "r2": 0.3030620218899758
+  },
+  "test_candidate_comparison": [
+    {
+      "model": "RandomForestRegressor",
+      "mae": 6.272236842355148,
+      "rmse": 7.861579531549085,
+      "r2": 0.3030620218899758
+    },
+    {
+      "model": "Ridge",
+      "mae": 6.570359960846798,
+      "rmse": 8.168294595447378,
+      "r2": 0.24761991511980552
+    },
+    {
+      "model": "DummyRegressor",
+      "mae": 7.606012191669269,
+      "rmse": 9.4183069957826,
+      "r2": -0.00027678912311923654
+    }
+  ]
+}

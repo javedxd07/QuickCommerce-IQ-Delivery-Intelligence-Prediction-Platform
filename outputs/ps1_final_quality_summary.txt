@@ -1,0 +1,34 @@
+Quick-Commerce Delivery Intelligence - PS1 Final GPS and Vehicle Data Validation
+
+Total records before / after: 45,593 / 45,593
+Age validation range: 18-80 years, inclusive.
+Invalid / unparseable age values: 38 / 0; original values and flags preserved.
+For consistency across the project, rider age values are considered valid for analysis when they fall between 18 and 80 years, inclusive. This is a data-validation rule and does not represent rider professional experience.
+Exact duplicate rows before / after: 0 / 0
+Records removed: 0 (none)
+
+Vehicle_condition value counts before validation:
+- 0: 15,009 (32.92%)
+- 1: 15,030 (32.97%)
+- 2: 15,034 (32.97%)
+- 3: 520 (1.14%)
+Invalid vehicle-condition records (value outside documented 0, 1, 2): 520
+Invalid vehicle values converted to missing, original preserved: 520
+
+GPS validation:
+Missing GPS records: 3,640
+Source restaurant (0,0) placeholder records: 3,640
+Source delivery near-origin pattern records: 3,640
+Source delivery (0.01, 0.01) placeholder records: 327
+Missing GPS coordinate cells: 14,560
+Outside broad India bounds records: 431
+Invalid GPS records: 4,071
+Valid GPS records: 41,522
+Distance calculation successes: 41,522
+Unusual distance records (upper 1.5 times the IQR fence 27.216 km): 0
+
+Distance validation: invalid GPS rows have no Distance_km; calculated distances are finite and non-negative.
+GPS coordinates were not imputed. Invalid GPS records remain available for non-geographic analyses.
+Target validation: Time_taken(min) matches the original source by order ID and is unchanged.
+Previous missing-value treatments (median numeric fills, Unknown categories, timestamp gaps/flags) remain intact.
+Vehicle documentation reference: https://github.com/Chandansahu18/food-delivery-operations-analytics-dashboard/blob/42683f1123fd417ceec94e5a749aee0293ee42c0/docs/data_dictionary.md

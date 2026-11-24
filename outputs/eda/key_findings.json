@@ -1,0 +1,67 @@
+[
+  {
+    "title": "Delivery time and late share vary by order hour",
+    "observation": "Hour 20:00 averaged 31.19 min (n=4,539; late 50.6%); hour 10:00 averaged 19.48 min (n=1,991; late 2.2%).",
+    "numerical_evidence": {
+      "high_hour": 20,
+      "high_mean_min": 31.19035029742234,
+      "high_n": 4539,
+      "high_late_percent": 50.583829037232874,
+      "low_hour": 10,
+      "low_mean_min": 19.48216976393772,
+      "low_n": 1991,
+      "low_late_percent": 2.15971873430437,
+      "difference_min": 11.708180533484622
+    },
+    "sample_count": {
+      "high_hour": 4539,
+      "low_hour": 1991
+    },
+    "operational_importance": "Review staffing and demand coverage at higher-duration hours.",
+    "limitation": "Missing order times are excluded; hour effects may reflect other factors and do not establish cause.",
+    "sla_minutes": 30,
+    "dataset_applicability": "This dataset represents food-delivery operations; results may not generalize to quick-commerce. Actual quick-commerce operational data is required for stronger validation."
+  },
+  {
+    "title": "Observed weather groups have different descriptive outcomes",
+    "observation": "Fog averaged 28.92 min (n=7,654; late 43.8%); Sunny averaged 21.86 min (n=7,284; late 12.5%).",
+    "numerical_evidence": {
+      "fog_mean_min": 28.916122288999215,
+      "fog_n": 7654,
+      "fog_late_percent": 43.7940945910635,
+      "sunny_mean_min": 21.856946732564523,
+      "sunny_n": 7284,
+      "sunny_late_percent": 12.520593080724876,
+      "difference_min": 7.059175556434692
+    },
+    "sample_count": {
+      "fog": 7654,
+      "sunny": 7284
+    },
+    "operational_importance": "Weather observations can be reviewed during contingency planning.",
+    "limitation": "Weather capture timing is unverified; this association is descriptive, not causal, and weather is excluded from placement-time features.",
+    "sla_minutes": 30,
+    "dataset_applicability": "This dataset represents food-delivery operations; results may not generalize to quick-commerce. Actual quick-commerce operational data is required for stronger validation."
+  },
+  {
+    "title": "Delivery outcomes vary across undocumented multiple_deliveries encodings",
+    "observation": "Encoded value 0 averaged 22.88 min (n=14,095; late 18.1%); encoded value 1 averaged 26.86 min (n=28,159; late 30.3%).",
+    "numerical_evidence": {
+      "encoded_0_mean_min": 22.876268180205745,
+      "encoded_0_n": 14095,
+      "encoded_0_late_percent": 18.119900673997872,
+      "encoded_1_mean_min": 26.855889768812812,
+      "encoded_1_n": 28159,
+      "encoded_1_late_percent": 30.260307539330235,
+      "difference_min": 3.979621588607067
+    },
+    "sample_count": {
+      "encoded_0": 14095,
+      "encoded_1": 28159
+    },
+    "operational_importance": "Investigate the field definition with the data owner before using it operationally.",
+    "limitation": "Meanings of encoded values are not documented in available project metadata; no delivery-count interpretation is asserted. PS1-imputed source values were excluded.",
+    "sla_minutes": 30,
+    "dataset_applicability": "This dataset represents food-delivery operations; results may not generalize to quick-commerce. Actual quick-commerce operational data is required for stronger validation."
+  }
+]

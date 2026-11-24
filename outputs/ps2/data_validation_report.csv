@@ -1,0 +1,23 @@
+metric,value,detail
+source_records,45593,Rows in read-only source.
+ps1_records,45593,Rows in completed PS1 dataset.
+model_ready_records,45593,Every record retained.
+duplicate_rows,0,Exact duplicate rows.
+missing_delivery_targets,0,Never imputed; exclude only from supervised target training.
+sla_minutes,30,30-minute analytical threshold; not an officially confirmed customer promise.
+sla_status,analytical_threshold_not_official_sla,Analytical label is generated; official SLA is unconfirmed.
+late_records,13606,Delivery time strictly greater than 30 minutes.
+on_time_records,31987,Delivery time less than or equal to 30 minutes.
+valid_target_records,45593,Denominator for class percentages; missing targets excluded.
+late_percent,29.842300353124386,Percentage of valid delivery-time targets.
+on_time_percent,70.15769964687561,Percentage of valid delivery-time targets.
+gps_valid_records,41522,Valid coordinate pairs within checks.
+gps_invalid_records,4071,Retained for non-geographic analysis.
+distance_success_records,41522,"Finite, non-negative Haversine distances."
+canonical_distance_column_count,1,Exactly one canonical distance_km column is exported; redundant PS1 Distance_km alias is omitted.
+unusual_distance_records,0,Upper 1.5 IQR fence; retained.
+rows_removed,0,No rows removed.
+age_validation_range,18-80,Age validation range applied consistently to Module 02 age summaries.
+rider_experience_field_available,False,No tenure/experience field found.
+dataset_applicability,This dataset represents food-delivery operations; results may not generalize to quick-commerce. Actual quick-commerce operational data is required for stronger validation.,Interpret findings within this food-delivery dataset.
+invalid_age_18_80_records,38,Temporary analysis mask only; original values and PS1 data remain unchanged.

@@ -1,0 +1,3 @@
+task,selected_model,selection_metric,validation_primary_metric,test_primary_metric,test_secondary_metric,classification_threshold
+Regression,RandomForestRegressor,validation MAE,6.2518650109474985,6.272236842355148,7.861579531549085,
+Classification,RandomForestClassifier,validation PR-AUC,0.5816859018685079,0.599492005584682,0.5927104886200859,0.29

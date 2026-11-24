@@ -1,0 +1,150 @@
+{
+  "selected_model": "RandomForestClassifier",
+  "selection_rule": "Highest validation PR-AUC; test data not used for selection.",
+  "threshold_selection": {
+    "selected_threshold": 0.29,
+    "rule": "Maximum validation F1 on thresholds from 0.05 to 0.95 in increments of 0.01; ties prefer the higher threshold.",
+    "validation_at_0_5": {
+      "threshold": 0.5,
+      "precision": 0.5456865747830526,
+      "recall": 0.506155303030303,
+      "f1": 0.5251780889216409,
+      "roc_auc": 0.77856522807047,
+      "pr_auc": 0.5816859018685079,
+      "accuracy": 0.7431229235880399,
+      "balanced_accuracy": 0.6708681558565519,
+      "confusion_matrix": [
+        [
+          4523,
+          890
+        ],
+        [
+          1043,
+          1069
+        ]
+      ]
+    },
+    "validation_at_selected_threshold": {
+      "threshold": 0.29,
+      "precision": 0.4465863453815261,
+      "recall": 0.7897727272727273,
+      "f1": 0.5705489994869164,
+      "roc_auc": 0.77856522807047,
+      "pr_auc": 0.5816859018685079,
+      "accuracy": 0.666312292358804,
+      "balanced_accuracy": 0.703957119224762,
+      "confusion_matrix": [
+        [
+          3346,
+          2067
+        ],
+        [
+          444,
+          1668
+        ]
+      ]
+    }
+  },
+  "test_at_selected_threshold": {
+    "threshold": 0.29,
+    "precision": 0.4606630380999505,
+    "recall": 0.8308790718429273,
+    "f1": 0.5927104886200859,
+    "roc_auc": 0.777742346043854,
+    "pr_auc": 0.599492005584682,
+    "accuracy": 0.6508391322144904,
+    "balanced_accuracy": 0.7012099761730359,
+    "confusion_matrix": [
+      [
+        2908,
+        2180
+      ],
+      [
+        379,
+        1862
+      ]
+    ]
+  },
+  "test_at_0_5": {
+    "threshold": 0.5,
+    "precision": 0.5644171779141104,
+    "recall": 0.533690316822847,
+    "f1": 0.5486238532110091,
+    "roc_auc": 0.777742346043854,
+    "pr_auc": 0.599492005584682,
+    "accuracy": 0.7314776913630782,
+    "balanced_accuracy": 0.6761415420592223,
+    "confusion_matrix": [
+      [
+        4165,
+        923
+      ],
+      [
+        1045,
+        1196
+      ]
+    ]
+  },
+  "probability_calibration_assessment": {
+    "assessment_partition": "test; diagnostic only, not used for fitting or selection",
+    "formal_calibration_applied": false,
+    "score_interpretation": "Estimated late-delivery risk score; not a guaranteed probability.",
+    "test_late_prevalence": 0.3057715923045436,
+    "brier_score": 0.17102922575598598,
+    "training_prevalence_baseline_brier_score": 0.21229791990305388,
+    "expected_calibration_error_10_quantile_bins": 0.04597661596911695,
+    "calibration_bins": [
+      {
+        "mean_estimated_risk": 0.021011851025189435,
+        "observed_late_fraction": 0.0286493860845839,
+        "orders": 733
+      },
+      {
+        "mean_estimated_risk": 0.0731603632421608,
+        "observed_late_fraction": 0.047748976807639835,
+        "orders": 733
+      },
+      {
+        "mean_estimated_risk": 0.14776789694867448,
+        "observed_late_fraction": 0.12414733969986358,
+        "orders": 733
+      },
+      {
+        "mean_estimated_risk": 0.22284963432646254,
+        "observed_late_fraction": 0.19236016371077763,
+        "orders": 733
+      },
+      {
+        "mean_estimated_risk": 0.29216998667121746,
+        "observed_late_fraction": 0.27012278308321963,
+        "orders": 733
+      },
+      {
+        "mean_estimated_risk": 0.3680792298100718,
+        "observed_late_fraction": 0.3155737704918033,
+        "orders": 732
+      },
+      {
+        "mean_estimated_risk": 0.44738872178863154,
+        "observed_late_fraction": 0.39290586630286495,
+        "orders": 733
+      },
+      {
+        "mean_estimated_risk": 0.5318504094750794,
+        "observed_late_fraction": 0.47885402455661663,
+        "orders": 733
+      },
+      {
+        "mean_estimated_risk": 0.6142840082645491,
+        "observed_late_fraction": 0.5443383356070941,
+        "orders": 733
+      },
+      {
+        "mean_estimated_risk": 0.7836671907677396,
+        "observed_late_fraction": 0.6630286493860846,
+        "orders": 733
+      }
+    ]
+  },
+  "score_interpretation": "Estimated late-delivery risk score; not a guaranteed probability."
+}

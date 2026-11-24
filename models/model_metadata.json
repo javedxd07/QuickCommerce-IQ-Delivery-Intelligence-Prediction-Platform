@@ -1,0 +1,39 @@
+{
+  "project": "Quick-Commerce Delivery Intelligence",
+  "sla_minutes": 30,
+  "sla_is_official_promise": false,
+  "approved_raw_features": [
+    "Order_Date",
+    "Time_Orderd",
+    "Type_of_order",
+    "City",
+    "Festival",
+    "distance_km"
+  ],
+  "regression_target": "delivery_time",
+  "classification_target": "is_late",
+  "regression_model": "RandomForestRegressor",
+  "classification_model": "RandomForestClassifier",
+  "classification_threshold": 0.29,
+  "classification_score_interpretation": "Estimated late-delivery risk score; not a guaranteed probability.",
+  "date_split": {
+    "train": {
+      "first_date": "2022-02-11",
+      "last_date": "2022-03-23",
+      "rows": 30739
+    },
+    "validation": {
+      "first_date": "2022-03-24",
+      "last_date": "2022-03-30",
+      "rows": 7525
+    },
+    "test": {
+      "first_date": "2022-03-31",
+      "last_date": "2022-04-06",
+      "rows": 7329
+    }
+  },
+  "missing_target_rows_excluded_from_supervision": 0,
+  "preprocessing_fit_partition": "train only",
+  "xgboost_available": false
+}
