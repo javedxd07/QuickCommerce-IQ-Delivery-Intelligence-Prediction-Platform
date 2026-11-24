@@ -1,1 +1,0 @@
-# QuickCommerce-IQ-Delivery-Intelligence-Prediction-Platform
